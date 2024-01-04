@@ -3,7 +3,7 @@ import axios from 'axios';
 export const fetchUserProject = async (username, setUserProjects, setProjectCount, setLoading) => {
   try {
     setLoading(true);  // Set loading to true when starting the request
-    const projectResponse = await axios.get(`http://localhost:5000/user-projects/${username}`);
+    const projectResponse = await axios.get(`https://w3dataapp.onrender.com/user-projects/${username}`);
     setUserProjects(projectResponse.data.projects);
     setProjectCount(projectResponse.data.project_count);
     setLoading(false);  // Set loading to false when the request is successful
@@ -16,7 +16,7 @@ export const fetchUserProject = async (username, setUserProjects, setProjectCoun
   
   export const updateProject = async (editedProject, editedDescription, setIsSuccessMessageVisible) => {
     try {
-      const response = await axios.put(`http://localhost:5000/update-project`, {
+      const response = await axios.put(`https://w3dataapp.onrender.com/update-project`, {
         project_name: editedProject.project_name,
         project_description: editedDescription,
       });

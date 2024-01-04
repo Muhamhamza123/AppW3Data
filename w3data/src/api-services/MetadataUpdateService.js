@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const handleSaveChanges = (selectedProject, selectedVersion, editedMetadata, setIsSaving) => {
   setIsSaving(true);
 
-  fetch('http://localhost:5000/update_metadata', {
+  fetch('https://w3dataapp.onrender.com/update_metadata', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

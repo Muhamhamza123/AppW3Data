@@ -4,14 +4,14 @@ import axios from 'axios';
 
 export const fetchMeasurements = setMeasurements => {
   axios
-    .get('http://localhost:5000/measurements')
+    .get('https://w3dataapp.onrender.com/measurements')
     .then(response => setMeasurements(response.data))
     .catch(error => console.error('Error fetching measurements:', error));
 };
 
 export const fetchFields = (measurementName, setFields) => {
   axios
-    .get(`http://localhost:5000/fields?measurement=${measurementName}`)
+    .get(`https://w3dataapp.onrender.com/fields?measurement=${measurementName}`)
     .then(response => setFields(response.data))
     .catch(error => console.error('Error fetching fields:', error));
 };
@@ -27,7 +27,7 @@ export const searchData = async (
   toast
 ) => {
   try {
-    const response = await axios.post('http://localhost:5000/search', {
+    const response = await axios.post('https://w3dataapp.onrender.com/search', {
       selectedMeasurement,
       selectedFields: fieldNames,
       ProjectName: project_name,
@@ -65,7 +65,7 @@ export const deleteData = (
   toast
 ) => {
   axios
-    .post(`http://localhost:5000/delete/${username}`, {
+    .post(`https://w3dataapp.onrender.com/delete/${username}`, {
       selectedMeasurement,
       startDate: startDate ? startDate.toISOString().slice(0, 19).replace('T', ' ') : null,
       endDate: endDate ? endDate.toISOString().slice(0, 19).replace('T', ' ') : null,
@@ -99,7 +99,7 @@ export const MyMetadata = (projectName, setMetadata, setFilteredMetadata, select
     // Check if projectName is not empty before making the request
     if (project_name) {
       axios
-        .get(`http://localhost:5000/metadata?project_name=${project_name}`)
+        .get(`https://w3dataapp.onrender.com/metadata?project_name=${project_name}`)
         .then(response => {
           if (response.data.length > 0) {
             setMetadata(response.data);

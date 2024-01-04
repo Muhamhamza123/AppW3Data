@@ -10,7 +10,7 @@ const useExperimentalEffect = (username) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/influxdb-data-home/${username}`);
+        const response = await axios.get(`https://w3dataapp.onrender.com/influxdb-data-home/${username}`);
         setData(response.data.data_list);
         setFieldNames(response.data.field_names);
       } catch (error) {

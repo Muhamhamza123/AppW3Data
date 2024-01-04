@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const fetchData = async (username, selectedMeasurement, selectedProject, setData, setFieldNames, setLoading) => {
   try {
-    const response = await axios.get(`http://localhost:5000/influxdb-data/${username}`, {
+    const response = await axios.get(`https://w3dataapp.onrender.com/${username}`, {
       params: { measurement: selectedMeasurement, project: selectedProject },
     });
     setData(response.data.data_list);
@@ -18,7 +18,7 @@ export const fetchData = async (username, selectedMeasurement, selectedProject, 
 
 export const fetchUserProjects = async (username, setUserProjects, setMetadata, setUniqueVersions) => {
   try {
-    const projectResponse = await axios.get(`http://localhost:5000/${username}`);
+    const projectResponse = await axios.get(`https://w3dataapp.onrender.com/${username}`);
     setUserProjects(projectResponse.data.projects);
 
     // Set metadata in the state
@@ -35,7 +35,7 @@ export const fetchUserProjects = async (username, setUserProjects, setMetadata, 
 
 export const fetchMeasurementNames = async (setMeasurementNames) => {
   try {
-    const measurementsResponse = await axios.get('http://localhost:5000/measurements');
+    const measurementsResponse = await axios.get('https://w3dataapp.onrender.com/measurements');
     setMeasurementNames(measurementsResponse.data);
   } catch (error) {
     console.error('Error:', error);

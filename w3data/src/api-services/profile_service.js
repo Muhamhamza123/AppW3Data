@@ -22,7 +22,7 @@ const useProfileEffect = (username) => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/profile/${username}`);
+        const response = await axios.get(`https://w3dataapp.onrender.com/profile/${username}`);
         setUserProfile(response.data);
         setLoading(false);
 
@@ -67,7 +67,7 @@ const useProfileEffect = (username) => {
     formData.append('Address', editedUserProfile.Address);
 
     try {
-      await axios.put(`http://localhost:5000/profile/${username}`, formData, {
+      await axios.put(`https://w3dataapp.onrender.com/profile/${username}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

@@ -18,8 +18,13 @@ from mysql.connector import Error
 from influxdb.exceptions import InfluxDBClientError, InfluxDBServerError
 from flask.helpers import send_from_directory
 
-app = Flask(__name__)
-
+app = Flask(__name__, static_folder='../w3data/build', static_url_path='/')
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
+    @app.errorhandler(404)
+def not_found(e):
+    return app.send_static_file('index.html')
 CORS(app, supports_credentials=True)
 
 # MySQL connection pooling configuration

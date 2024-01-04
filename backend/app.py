@@ -20,7 +20,7 @@ from flask.helpers import send_from_directory
 
 app = Flask(__name__)
 
-CORS(app, supports_credentials=True, origins='http://localhost:3000')
+CORS(app, supports_credentials=True, origins=['http://localhost:3000', 'https://w3dataapp.onrender.com'])
 
 # MySQL connection pooling configuration
 

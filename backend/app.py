@@ -20,7 +20,7 @@ from flask.helpers import send_from_directory
 
 app = Flask(__name__)
 
-CORS(app, supports_credentials=True, origins=['http://localhost:3000', 'https://w3dataapp.onrender.com'])
+CORS(app, supports_credentials=True)
 
 # MySQL connection pooling configuration
 
@@ -44,10 +44,10 @@ app.config['JWT_COOKIE_CSRF_PROTECT'] = False
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=15)
 jwt = JWTManager(app)
 
-influxdb_url = 'http://86.50.252.118:8086'
-influxdb_token = 'ynNB0w-RD65XSObOiDay0m1brg8Am14l2wFwB9ra2TYUN_6OFlaVGtStZD7S4bmJPJEri5Spmke22UKgw_qi_w=='
-influxdb_org = 'w3data'
-influxdb_bucket = "we3database" 
+influxdb_url = 'https://eu-central-1-1.aws.cloud2.influxdata.com'
+influxdb_token = 'AUBjiJGQ5fBjAEYUahnI9Y7K-2QNk0vNldJBoeo7vbsSYBOuzhsNTw4t74q3FnFJPOj-RllavH0W-vq5QlAkeg=='
+influxdb_org = 'datamangment'
+influxdb_bucket = "new" 
 
 #gittokken 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
 # InfluxDB connection pooling configuration
@@ -93,7 +93,7 @@ def login():
     if request.method == 'OPTIONS':
         # Respond to the preflight OPTIONS request
         response = make_response()
-        response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
+        response.headers['Access-Control-Allow-Origin'] = '*'
         response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
         response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
         response.headers['Access-Control-Max-Age'] = '3600'

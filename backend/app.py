@@ -18,15 +18,9 @@ from mysql.connector import Error
 from influxdb.exceptions import InfluxDBClientError, InfluxDBServerError
 from flask.helpers import send_from_directory
 
-app = Flask(__name__, static_folder='../w3data/build', static_url_path='/')
-@app.route('/')
-def index():
-    return app.send_static_file('index.html')
-@app.errorhandler(404)
-def not_found(e):
-    return app.send_static_file('index.html')
+app = Flask(__name__)
 
-CORS(app, supports_credentials=True, origins='*')
+CORS(app, supports_credentials=True, origins='http://localhost:3000')
 
 # MySQL connection pooling configuration
 
@@ -99,7 +93,7 @@ def login():
     if request.method == 'OPTIONS':
         # Respond to the preflight OPTIONS request
         response = make_response()
-        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
         response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
         response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
         response.headers['Access-Control-Max-Age'] = '3600'

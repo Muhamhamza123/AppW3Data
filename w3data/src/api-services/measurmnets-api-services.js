@@ -18,9 +18,10 @@ export const fetchData = async (username, selectedMeasurement, selectedProject, 
 
 export const fetchUserProjects = async (username, setUserProjects, setMetadata, setUniqueVersions) => {
   try {
-    const projectResponse = await axios.get(`https://w3dataapp.onrender.com/${username}`);
+    
+    const projectResponse = await axios.get(`http://localhost:5000/user-projects/${username}`);
     setUserProjects(projectResponse.data.projects);
-
+    if (projectResponse.data.metadata && Array.isArray(projectResponse.data.metadata)) {
     // Set metadata in the state
     setMetadata(projectResponse.data.metadata);
 
@@ -28,9 +29,14 @@ export const fetchUserProjects = async (username, setUserProjects, setMetadata, 
     const versions = projectResponse.data.metadata.map((meta) => meta.version);
     const uniqueVersions = [...new Set(versions)];
     setUniqueVersions(uniqueVersions);
-  } catch (error) {
-    console.error('Error:', error);
+  } else {
+    console.error('Metadata is missing or not an array:', projectResponse.data);
   }
+  
+} catch (error) {
+  console.error('Error:', error);
+  
+}
 };
 
 export const fetchMeasurementNames = async (setMeasurementNames) => {

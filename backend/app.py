@@ -49,10 +49,10 @@ app.config['JWT_COOKIE_CSRF_PROTECT'] = False
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=15)
 jwt = JWTManager(app)
 
-influxdb_url = 'https://eu-central-1-1.aws.cloud2.influxdata.com'
-influxdb_token = 'AUBjiJGQ5fBjAEYUahnI9Y7K-2QNk0vNldJBoeo7vbsSYBOuzhsNTw4t74q3FnFJPOj-RllavH0W-vq5QlAkeg=='
-influxdb_org = 'datamangment'
-influxdb_bucket = "new" 
+influxdb_url = 'http://128.214.252.242:8086'
+influxdb_token = 'o2QrMfzLqs75ACyqBnXK1X7lM5Hswy6L5OeaSUZcIoZbFAlngzxNIvRZOyj3ap0Z6dxQb7Y-sIVtmpx-P1LkdA=='
+influxdb_org = 'w3data'
+influxdb_bucket = "w3data" 
 
 #gittokken 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
 # InfluxDB connection pooling configuration

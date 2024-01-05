@@ -95,6 +95,7 @@ useEffect(() => {
 <div style={{width:'40%',height:'auto'}} >
 <h2>Select a Project</h2>
 <div>
+{userProjects && userProjects.length > 0 && (
   <select onChange={handleProjectSelection}>
     <option value="">Select a project</option>
     {userProjects.map((project, index) => (
@@ -103,6 +104,7 @@ useEffect(() => {
       </option>
     ))}
   </select>
+  )}
 </div>
 
 {selectedProject && (
@@ -113,6 +115,7 @@ useEffect(() => {
     </div>
     <div>
   <h2>Meta Data For The Project</h2>
+  {uniqueVersions && uniqueVersions.length > 0 && (
   <select onChange={handleVersionSelection}>
     <option value="">Select a version</option>
     {/* Render options based on unique versions */}
@@ -123,6 +126,7 @@ useEffect(() => {
       
     ))}
   </select>  
+  )}
 </div>
   </div>
 )}
@@ -130,6 +134,7 @@ useEffect(() => {
      <div style={{width:'40%',height:'auto'}} >
      <div>
         <h2>Measurement Names</h2>
+        {measurementNames && measurementNames.length > 0 && (
         <select onChange={handleMeasurementSelection}>
           <option value="">Select a measurement</option>
           {measurementNames.map((measurement, index) => (
@@ -138,7 +143,9 @@ useEffect(() => {
             </option>
           ))}
         </select>
-      </div>         
+        )}
+      </div>
+      {fieldNames && fieldNames.length > 0 && (           
       <div style={{marginTop:'20px'}}>
         {fieldNames.map((fieldName) => (
          <label key={fieldName}>
@@ -151,7 +158,8 @@ useEffect(() => {
             {fieldName}
           </label>
         ))}
-      </div>      
+      </div>
+      )}      
      </div>
       {/* Display metadata information */}  
     </div>      
